@@ -42,7 +42,7 @@ app.post('/send-email', (req, res) => {
 
 // Start the server
 app.listen(3000, () => {
-    console.log('Server running on http://localhost:3000');
+    console.log('Server running on https://sarda-home-tuition.onrender.com');
 });
 
 
