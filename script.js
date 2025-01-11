@@ -45,44 +45,4 @@ app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
 });
 
-// yha se html wala h
 
-
-const form = document.getElementById('contact-form');
-const overlay = document.getElementById('loading-overlay');
-
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    // Show the loading overlay
-    overlay.style.display = 'flex';
-
-    const formData = new FormData(form);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        message: formData.get('message'),
-    };
-
-    try {
-        const response = await fetch('http://localhost:3000/send-email', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-            alert('Message sent successfully!');
-            form.reset();
-        } else {
-            alert('Failed to send message. Please try again.');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    } finally {
-        // Hide the loading overlay
-        overlay.style.display = 'none';
-    }
-});
